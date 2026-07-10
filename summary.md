@@ -22,6 +22,8 @@
 * Enriches the sequenced order data with `store_name` via a `LEFT JOIN` for final BI consumption.
 * Materialised as a table for optimal query performance.
 
+<img width="1085" height="254" alt="Screenshot 2026-07-10 at 15 08 40" src="https://github.com/user-attachments/assets/f0191e49-ae65-4dd2-809d-4e718c79e795" />
+
 ---
 
 ## Data Quality Testing
