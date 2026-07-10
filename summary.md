@@ -9,10 +9,10 @@
 
 ---
 
-## 2. Model Architecture
+## Model Architecture
 
 ### Staging Layer (`models/staging/`)
-* Standardizes and cleans raw tables (`raw_orders`, `raw_stores`, etc.) with basic casting and renaming into views.
+* Standardises and cleans raw tables (`raw_orders`, `raw_stores`, etc.) with basic casting and renaming into views.
 
 ### Intermediate Layer (`models/intermediate/int_customer_order_sequenced.sql`)
 * Generates user-level purchase sequences partitioned by both `store_id` and `customer_id` for multi-store scalability.
@@ -20,11 +20,11 @@
 
 ### Marts Layer (`models/marts/fct_customer_order_insights.sql`)
 * Enriches the sequenced order data with `store_name` via a `LEFT JOIN` for final BI consumption.
-* Materialized as a table for optimal query performance.
+* Materialised as a table for optimal query performance.
 
 ---
 
-## 3. Data Quality Testing
+## Data Quality Testing
 Configured in `models/marts/schema.yml` using dbt 2.0 argument syntax:
 
 * **Core Tests (Column-level):**
@@ -36,7 +36,7 @@ Configured in `models/marts/schema.yml` using dbt 2.0 argument syntax:
 
 ---
 
-## 4. Insights with Evidence
+## Insights with Evidence
 Based on the final mart query aggregation:
 
 | store_name | total_unique_customers | one_time_churn_rate_pct | vip_customer_count | avg_purchase_frequency | vip_avg_return_window_days |
@@ -44,7 +44,7 @@ Based on the final mart query aggregation:
 | Philadelphia | 128 | 7.8% | 105 | 5.4 times | 2.7 days |
 
 * **Evidence-based Insight:** The Philadelphia store shows exceptional customer retention. Only **7.8%** of customers churn after their first purchase, while **82% (105 out of 128)** become VIPs (3+ orders). 
-* **Behavioral Pattern:** Once a customer enters the VIP tier, their velocity accelerates significantly, returning to purchase every **2.7 days** on average.
+* **Behavioural Pattern:** Once a customer enters the VIP tier, their velocity accelerates significantly, returning to purchase every **2.7 days** on average.
 
 ---
 
