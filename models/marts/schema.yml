@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_customer_order_insights
+    description: "Fct table containing metrics on customer-specific order sequences and repurchase cycles."
+    
+    # Core Test
+    columns:
+      - name: order_id
+        description: "Primary Key: Unique identifier for each order."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Foreign Key: Reference to the customer."
+        tests:
+          - not_null
+
+      - name: store_id
+        description: "Foreign Key: Reference to the store where the order was placed."
+        tests:
+          - not_null
+
+      - name: purchase_type
+        description: "Segmentation flag indicating if the order is a first-time purchase or a repeat buy."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['First-time', 'Repeat']
+
+    # Business Logic Test
+    tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "days_since_prior_order >= 0"
