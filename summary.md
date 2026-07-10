@@ -48,5 +48,5 @@ Based on the final mart query aggregation:
 
 ---
 
-## 5. Actionable Next Steps
-1. **Automate Hyper-Fast CRM Trigger:** Since the VIP return window is extremely tight (2.7 days), configure an automated marketing push notification at the **48-hour mark** post-purchase if a repeat customer has not ordered again.
+## Actionable Next Steps
+* **Automate Hyper-Fast CRM Trigger:** Since the VIP return window is extremely tight (2.7 days), configure an automated marketing push notification at the **48-hour mark** post-purchase if a repeat customer has not ordered again.
